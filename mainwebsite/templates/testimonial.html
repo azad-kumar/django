@@ -1,0 +1,112 @@
+{% load static %}
+
+<html lang="en" class="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="testimonial">
+
+  <title>Red bubble syp | testimonial</title>
+  <link rel="shortcut icon" type="image/x-icon" href="{% static 'favicon/favicon.ico' %}">
+  <link rel="stylesheet" href="{%static 'css/main.css' %}">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400&amp;display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+</head>
+
+<body class="bg-white dark:bg-gray-900">
+  <!--include header-->
+  {% include 'header.html' %}
+  <!-- end of the header -->
+
+  <!-- body start -->
+  <div class="py-16">
+    <div class="xl:container m-auto px-6 text-gray-600 dark:text-gray-300 md:px-12 xl:px-6">
+      <h2 class="mb-12 text-center text-2xl font-bold text-gray-800 dark:text-white md:text-4xl">
+        What's our customers say
+      </h2>
+      <div class="grid gap-8 md:grid-rows-2 lg:grid-cols-2">
+        <div
+          class="row-span-2 rounded-3xl border border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-8 text-center shadow-2xl shadow-gray-600/10 dark:shadow-none">
+          <div class="flex h-full flex-col justify-center space-y-4">
+            <img class="mx-auto h-20 w-20 rounded-full" src="{% static '/image/testimonial/second_user.webp' %}" alt="user avatar"
+              height="220" width="220" loading="lazy" />
+            <p class="md:text-xl">
+              <span class="font-serif">"</span> I recently had the pleasure of using the design service Pack. I was blown away by the level of professionalism, creativity, and attention to detail demonstrated by the team. The entire process was seamless, with prompt communication and a commitment to ensuring complete satisfaction."<span class="font-serif">"</span>
+            </p>
+            <div>
+              <h6 class="text-lg font-semibold leading-none">Jane Doe</h6>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="rounded-3xl sm:flex sm:space-x-8 border border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-8 text-center shadow-2xl shadow-gray-600/10 dark:shadow-none">
+          <img class="mx-auto h-20 w-20 rounded-full" src="{% static '/image/testimonial/first_user.webp' %}" alt="user avatar"
+            height="220" width="220" loading="lazy" />
+          <div class="mt-4 space-y-4 text-center sm:mt-0 sm:text-left">
+            <p>
+              <span class="font-serif">"</span> The design service from was top-notch. Impressive professionalism and creative talent, with a keen eye for detail. Got exactly what I wanted, seamless process. Highly recommend.  <span class="font-serif">"</span>
+            </p>
+            <div>
+              <h6 class="text-lg font-semibold leading-none">Jane Doe</h6>
+            </div>
+          </div>
+        </div>
+        <div
+          class="rounded-3xl sm:flex sm:space-x-8 border border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-8 text-center shadow-2xl shadow-gray-600/10 dark:shadow-none">
+          <img class="mx-auto h-20 w-20 rounded-full" src="{% static '/image/testimonial/third_user.webp' %}" alt="user avatar"
+            height="220" width="220" loading="lazy" />
+          <div class="mt-4 space-y-4 text-center sm:mt-0 sm:text-left">
+            <p>
+              <span class="font-serif">"</span> Big thanks for the free Redbubble keyword research tool. Saved me time and boosted my sales. Highly converting and a must-have for anyone on Redbubble. Top-notch service. <span class="font-serif">"</span>
+            </p>
+            <div>
+              <h6 class="text-lg font-semibold leading-none">pare gill</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- body end -->
+  <!--include footer-->
+  {% include 'footer.html' %}
+  <!-- end of the footer -->
+
+
+</body>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<!-- including header and footer -->
+
+
+
+<!-- Initialize Swiper -->
+<script>
+  var swiper = new Swiper('.mySwiper', {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    keyboard: {
+      enabled: true,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+      dynamicBullets: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  })
+</script>
+
+
+</body>
+
+</html>

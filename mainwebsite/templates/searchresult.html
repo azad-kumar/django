@@ -1,0 +1,218 @@
+{% load static %}
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="hero architecture section">
+
+    <title>Red bubble syp | Result</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'favicon/favicon.ico' %}">
+    <link rel="stylesheet" href=" {% static 'css/main.css' %}">
+    <link rel="stylesheet" href=" {% static 'css/table.css' %}">
+    <link rel="stylesheet" href=" {% static 'css/searchbar.css' %}">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400&amp;display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body class="bg-white dark:bg-gray-900" onload="start_process()">
+
+    <!--include header-->
+    {% include 'header.html' %}
+    <!-- end of the header -->
+
+
+
+    <div class="wrapper2">
+        <form class="search" action="search-result" method="GET" onsubmit="loading()">
+            <input id="submit" type="text" class="searchText" placeholder="Find some cool stuff" name="keyword"
+                required>
+            <input id="submit_btn" type="submit" class="searchButton" value=search>
+        </form>
+    </div>
+
+    {% if Google %}
+    <div class="container1">
+        <div class="table">
+            <div class="table_header_top">
+                <div class="header__item-top"><a id="header">Popular Google Searches for {{ main_keyword }}</a></div>
+            </div>
+            <div class="table-header">
+                <div class="header__item"><a id="name">Keyword</a></div>
+                <div class="header__item"><a id="draws">Monthy Volume</a></div>
+                <div class="header__item"><a id="total">Competition</a></div>
+            </div>
+
+            <div class="table-content" id="myTable1">
+
+                {% for key in Google.keywords%}
+                <div class="table-row">
+                    <div class="table-data">{{ key.keywordText }}</div>
+                    <div class="table-data">{{ key.searchVolume }}</div>
+                    <div class="table-data">{{ key.competition }}</div>
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </div>
+    {% endif %}
+
+
+    {% if keyword %}
+    <div class="container1">
+        <div class="table">
+            <div class="table_header_top">
+                <div class="header__item-top"><a id="header">Popular RedBubble results for {{ main_keyword }} out of {{ design_count }}</a></div>
+            </div>
+            <div class="table-header">
+                <!-- <div class="header__item"><a id="name">The Art</a></div> -->
+                <div class="header__item"><a id="draws">Keyword</a></div>
+                <div class="header__item"><a id="total">Design Count</a></div>
+                <div class="header__item"><a id="total">Monthly Volume</a></div>
+                <div class="header__item"><a id="total">competetion</a></div>
+            </div>
+
+            <div class="table-content" id="myTable2">
+
+                {% for key, value in keyword.items %}
+                <div class="table-row">
+                    <div class="table-data">{{ value.keyword }}</div>
+                    <div class="table-data">{{ value.design_count }}</div>
+                    <div class="table-data">{{ value.search_Volume }}</div>
+                    <div class="table-data">{{ value.competetion }}</div>
+                    <!-- <div class="table-data">0</div> -->
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+
+    {% if trending_searches %}
+    <div class="container1">
+        <div class="table">
+            <div class="table_header_top">
+                <div class="header__item-top"><a id="header">Trending RedBubble searches for {{ main_keyword }}</a>
+                </div>
+            </div>
+            <div class="table-header">
+                <div class="header__item"><a id="name">Kayword</a></div>
+                <div class="header__item"><a id="draws">Label</a></div>
+                <div class="header__item"><a id="total">Ia Code</a></div>
+            </div>
+
+            <div class="table-content" id="myTable3">
+
+                {% for key, value in trending_searches.items %}
+                <div class="table-row">
+                    <div class="table-data">{{ value.keywords }}</div>
+                    <div class="table-data">{{ value.label }}</div>
+                    <div class="table-data">{{ value.ia_code }}</div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+
+    </div>
+    <!--include footer-->
+    {% include 'footer.html' %}
+    <!-- end of the footer -->
+
+</body>
+
+
+</html>
+
+<script>
+
+    loading = function () {
+        var submitBtn = document.getElementById("submit_btn");
+        submitBtn.disabled = true;
+        submitBtn.value = "O";
+        submitBtn.style.color = "rgb(6 182 212)"
+        submitBtn.style.backgroundImage = `url("{% static 'image/loading/loading.gif' %}")`;
+        submitBtn.style.backgroundRepeat = "no-repeat";
+        submitBtn.style.backgroundSize = "cover";
+        submitBtn.style.backgroundPosition = "center";
+
+        // Code to hide the loading GIF and restore the submit button's original appearance
+        window.addEventListener("unload", function () {
+            submitBtn.disabled = false;
+            submitBtn.value = "search";
+            submitBtn.style.backgroundImage = "none";
+            submitBtn.style.backgroundRepeat = "repeat";
+            submitBtn.style.backgroundSize = "auto";
+            submitBtn.style.backgroundPosition = "left center";
+        });
+    }
+
+
+    get_first_five = function (list) {
+        if (list.length >= 5)
+            return list.slice(0, 5);
+        else {
+            return list.slice(0, list.length)
+        }
+    }
+
+
+    delete_first_five = function (list) {
+        if (list.length >= 5)
+            return list.slice(5);
+        else
+            return list.slice(list.length)
+    }
+
+
+    add_to_keyword_div = function (table_ID, keyword, search_voulme, design_count, competetion) {
+        document.getElementById(table_ID).innerHTML +=
+            `
+            <div class="table-row">
+            <div class="table-data">${keyword}</div>
+            <div class="table-data">${design_count}</div>
+            <div class="table-data">${search_voulme}</div>
+            <div class="table-data">${competetion}</div>
+            </div>
+        `
+        return true
+    }
+
+
+    start_adding_to_keyword_table = async function (table_ID, keyword_list) {
+        let data2 = []
+        const listDataString = keyword_list.join('&list_data=');
+        let response = await fetch(`http://127.0.0.1:8000/get-keyword-properties?list_data=${listDataString}`);
+        data2 = await response.json();
+        for (let key in data2) {
+            let keyword = data2[key]['keyword']
+            let search_Volume = data2[key]['search_Volume']
+            let design_count = data2[key]['design_count']
+            let competetion = data2[key]['competetion']
+            add_to_keyword_div(table_ID, keyword, search_Volume, design_count, competetion)
+        }
+        return true
+    }
+
+    start_process = async function () {
+        console.log('start process function started')
+        table_ID = "myTable2";
+        let main_keyword_list = {{ data| safe }};
+    while (main_keyword_list.length > 0) {
+        var key_list = get_first_five(main_keyword_list);
+        main_keyword_list = delete_first_five(main_keyword_list);
+        await start_adding_to_keyword_table(table_ID, key_list);
+    }
+    }
+
+</script>

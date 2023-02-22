@@ -1,0 +1,80 @@
+{% load static %}
+
+<footer class="rounded-xl bg-gray-800">
+
+  <div class="container m-auto space-y-8 px-6 py-16 text-white md:px-12 lg:px-20">
+    <div class="flex flex-wrap items-center justify-between gap-4 border-b pb-8">
+      <img width="100" height="42" src="{% static 'favicon/favicon.png' %}" alt="logo tailus" class="w-32" onclick="opensearch()" />
+    </div>
+    <div class="grid grid-cols-2 gap-6 sm:grid-cols-3">
+      <div>
+        <h6 class="text-lg font-medium text-cyan-500">Company</h6>
+        <ul class="mt-4 list-inside space-y-4">
+          <li>
+            <a href="#" class="transition hover:text-cyan-600" onclick="openabout()">About</a>
+          </li>
+          <li>
+            <a href="#" class="transition hover:text-cyan-600" onclick="openteam()">Team</a>
+          </li>
+          <li>
+            <a href="#" class="transition hover:text-cyan-600" onclick="opentestimonial()">testimonial</a>
+          </li>
+          <li>
+            <a href="#" class="transition hover:text-cyan-600" onclick="opencontributors()">Contributors</a>
+          </li>
+          <li>
+            <a href="#" class="transition hover:text-cyan-600" onclick="openprivacypolicy()">Privacy policy</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h6 class="text-lg font-medium text-cyan-500">Products</h6>
+        <ul class="mt-4 list-inside space-y-4">
+          <li>
+            <a href="#" class="transition hover:text-cyan-600">keyword Reserch</a>
+          </li>
+          <li>
+            <a href="#" class="transition hover:text-cyan-600">Trending Keywords</a>
+          </li>
+          <li>
+            <a href="https://redbubblespy.wixsite.com/blog-services/services" target="_blank" class="transition hover:text-cyan-600">Services</a>
+          </li>
+          <li>
+            <a href="https://redbubblespy.wixsite.com/blog-services/my-blog" target="_blank" class="transition hover:text-cyan-600">Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+</footer>
+
+
+<script>
+  openabout = function () {
+    window.open('/team', "_self")
+  }
+
+  openteam = function () {
+    window.open('/team', "_self")
+  }
+
+  opencontributors = function () {
+    window.open('/contributor', "_self")
+  }
+
+  opentestimonial = function () {
+    window.open('/testimonial', "_self")
+  }
+
+  opensearch = function () {
+    window.open('/search', "_self")
+}
+
+openprivacypolicy = function () {
+    window.open('/privacy-policy', "_self")
+}
+
+  openabout = function () {
+    window.open('/about', "_self")
+}
+
+</script>

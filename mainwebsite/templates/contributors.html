@@ -1,0 +1,78 @@
+{% load static %}
+<html lang="en" class="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="hero architecture section">
+
+  <title>Red bubble syp | Result</title>
+  <link rel="shortcut icon" type="image/x-icon" href="{% static 'favicon/favicon.ico' %}">
+  <link rel="stylesheet" href=" {% static 'css/main.css' %}">
+  <link rel="stylesheet" href=" {% static 'css/table.css' %}">
+  <link rel="stylesheet" href=" {% static 'css/searchbar.css' %}">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400&amp;display=swap"
+    rel="stylesheet">
+
+</head>
+
+
+<!--include header-->
+{% include 'header.html' %}
+<!-- end of the header -->
+
+<body class="bg-white dark:bg-gray-900">
+
+  <div class="relative flex flex-col items-center overflow-hidden py-20 md:py-40 bg-gray-100 dark:bg-gray-900">
+    <div class="container relative z-[1] m-auto px-6 md:px-12">
+      <div class="m-auto text-center md:w-8/12 lg:w-6/12">
+        <h2 class="text-2xl font-bold text-gray-800 dark:text-white md:text-4xl">
+          Our heroes <span class="text-primary">contribute</span> to the development of RED BUBBLE spy
+        </h2>
+      </div>
+      <div class="m-auto mt-16 md:w-11/12 lg:w-8/12 xl:w-7/12">
+        <div class="flex flex-wrap justify-center gap-6">
+          <div
+            class="group rounded-xl border border-gray-200 dark:border-gray-600 bg-white bg-opacity-5 py-2 px-4 hover:bg-opacity-10">
+            <img src="{% static '/image/clients/airbnb.svg' %}" class="contrast-0 transition group-hover:contrast-100" loading="lazy"
+              alt="logo airbnb">
+          </div>
+          <div
+            class="group rounded-xl border border-gray-200 dark:border-gray-600 bg-white bg-opacity-5 py-2 px-4 hover:bg-opacity-10">
+            <img src="{% static '/image/clients/microsoft.svg' %}" class="contrast-0 transition group-hover:contrast-100"
+              loading="lazy" alt="logo microsoft">
+          </div>
+          <div
+            class="group rounded-xl border border-gray-200 dark:border-gray-600 bg-white bg-opacity-5 py-2 px-4 hover:bg-opacity-10">
+            <img src="{% static '/image/clients/ge.svg' %}" class="contrast-0 transition group-hover:contrast-100" loading="lazy"
+              alt="logo ge">
+          </div>
+          <div
+            class="group rounded-xl border border-gray-200 dark:border-gray-600 bg-white bg-opacity-5 py-2 px-4 hover:bg-opacity-10">
+            <img src="{% static '/image/clients/bissell.svg' %}" class="contrast-0 transition group-hover:contrast-100" loading="lazy"
+              alt="logo bissell">
+          </div>
+          <div
+            class="group rounded-xl border border-gray-200 dark:border-gray-600 bg-white bg-opacity-5 py-2 px-4 hover:bg-opacity-10">
+            <img src="{% static '/image/clients/coty.svg' %}" class="contrast-0 transition group-hover:contrast-100" loading="lazy"
+              alt="logo bissell">
+          </div>
+          <div
+            class="group rounded-xl border border-gray-200 dark:border-gray-600 bg-white bg-opacity-5 py-2 px-4 hover:bg-opacity-10">
+            <img src="{% static '/image/clients/automatic.svg' %}" class="contrast-0 transition group-hover:contrast-100"
+              loading="lazy" alt="logo automatic">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--include footer-->
+  {% include 'footer.html' %}
+  <!-- end of the footer -->
+
+</body>
+
+</html>

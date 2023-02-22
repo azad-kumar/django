@@ -1,0 +1,144 @@
+{% load static %}
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="hero architecture section">
+
+    <title>Red bubble syp | Home</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'favicon/favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/table.css' %}">
+    <link rel="stylesheet" href="{% static 'css/searchbar.css' %}">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400&amp;display=swap"
+        rel="stylesheet">
+
+</head>
+
+<!-- pop up styling -->
+<style>
+    /* Pop-up box */
+    .popup {
+        color: white;
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 9999;
+        padding: 20px;
+        border: 3px solid rgb(6 182 212);
+        border-radius: 10px;
+        background-color: #000000;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        text-align: center;
+    }
+
+    /* Close button */
+    .popup-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+    }
+
+    /* Blur effect */
+    body.dark .blur {
+        filter: blur(5px);
+    }
+
+    body.light .blur {
+        filter: blur(5px) brightness(90%);
+    }
+
+    .button {
+        border: 2px solid rgb(6 182 212);
+        padding: 10px;
+        padding-left: 30px;
+        padding-right: 30px;
+        background-color: black;
+        color: white;
+        border-radius: 10px;
+        font-size: 20px;
+    }
+</style>
+
+<body class="bg-white dark:bg-gray-900">
+
+    <!--include header-->
+    {% include 'header.html' %}
+    <!-- end of the header -->
+
+
+    <section id="background_section">
+        <div class="wrapper">
+            <form class="search" action="search-result" method="GET" onsubmit="loading()">
+                <input id="submit" type="text" class="searchText" placeholder="Find some cool stuff" name="keyword"
+                    required>
+                <input id="submit_btn" type="submit" class="searchButton" value=search>
+            </form>
+        </div>
+    </section>
+
+    <!-- Pop up box -->
+    <div id="popup" class="popup">
+        <h2>ATTENTION !</h2>
+        <p>Until the results are loading would you like to have a look at out services to boost your sales</p>
+        <br>
+        <a href="https://redbubblespy.wixsite.com/blog-services/services" target="_blank"><span class="close"
+            onclick="hidePopup()"><button class="button" style="margin-right: 20px;">ok</button></span></a>
+        <span class="close" onclick="hidePopup()"><button class="button">no</button></span>
+    </div>
+
+
+    <!--include footer-->
+    {% include 'footer.html' %}
+    <!-- end of the footer -->
+
+
+</body>
+
+</html>
+
+<script>
+
+
+    loading = function () {
+        var background = document.getElementById("background_section");
+        var popup = document.getElementById("popup");
+        var submitBtn = document.getElementById("submit_btn");
+        background.style.filter = "blur(4px)";
+        popup.style.display = "block";
+        submitBtn.disabled = true;
+        submitBtn.value = "O";
+        submitBtn.style.color = "rgb(6 182 212)"
+        submitBtn.style.backgroundImage = `url("{% static 'image/loading/loading.gif' %}")`;
+        submitBtn.style.backgroundRepeat = "no-repeat";
+        submitBtn.style.backgroundSize = "cover";
+        submitBtn.style.backgroundPosition = "center";
+
+        // Code to hide the loading GIF and restore the submit button's original appearance
+        window.addEventListener("unload", function () {
+            submitBtn.disabled = false;
+            submitBtn.value = "search";
+            submitBtn.style.backgroundImage = "none";
+            submitBtn.style.backgroundRepeat = "repeat";
+            submitBtn.style.backgroundSize = "auto";
+            submitBtn.style.backgroundPosition = "left center";
+        });
+    }
+
+    hidePopup = function()
+    {
+        var background = document.getElementById("background_section");
+        var popup = document.getElementById("popup");
+        background.style.filter = "none";
+        popup.style.display = "none";
+
+    }
+
+</script>
